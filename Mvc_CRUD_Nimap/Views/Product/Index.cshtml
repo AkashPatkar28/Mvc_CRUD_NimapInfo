@@ -1,0 +1,44 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.11.1/css/jquery.dataTables.min.css" />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.datatables.net/1.11.1/js/jquery.dataTables.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#myTable1').DataTable({
+                "serverSide": true,
+                "ajax": {
+                    "url": "@Url.Action("LoadData")",
+                    "type": "POST",
+                    "dataType": "json"
+                },
+                "columns": [
+                    { "data": "ProductId" },   // Assuming "Productid" is the property name in your Product model
+                    { "data": "ProductName" }  // Assuming "Productname" is the property name in your Product model
+                    { "data": "CategoryId" }  // Assuming "Categoryname" is the property name in your Product model
+                    { "data": "CategoryName" }  // Assuming "Categoryname" is the property name in your Product model
+                ]
+            });
+        });
+    </script>
+</head>
+<body>
+    <table id="myTable1" class="display">
+        <thead>
+            <tr>
+                <th>ProductId</th>
+                <th>ProductName</th>
+                <th>CategoryId</th>
+                <th>CategoryName</th>
+            </tr>
+        </thead>
+    </table>
+</body>
+</html>
